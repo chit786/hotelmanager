@@ -8,9 +8,12 @@ import { NavController,AlertController } from 'ionic-angular';
 })
 export class HomePage {
   todos: any;
+  mainmenus: any;
+
+  //this.mainmenus = ['Starters', 'Soups', 'Salads', 'Rotis', 'Drinks', 'Deserts', 'Rice and Pulavs', 'Subji'];
  
   constructor(public navCtrl: NavController, public todoService: Todos, public alertCtrl: AlertController) {
- 
+  this.mainmenus = ['Starters', 'Soups', 'Salads', 'Rotis', 'Drinks', 'Deserts', 'Rice and Pulavs', 'Subji'];
   }
  
   ionViewDidLoad(){
@@ -20,6 +23,10 @@ export class HomePage {
     });
  
   }
+ 
+ removeMenuItem(index) {
+    this.mainmenus.splice(index, 1);
+ }
  
   createTodo(){
  

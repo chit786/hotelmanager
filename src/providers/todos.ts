@@ -19,7 +19,7 @@ export class Todos {
   constructor(public http: Http) {
 
     this.db = new PouchDB('hotelmanager');
-    this.remote = 'http://192.168.1.77:5984/hotelmanager';
+    this.remote = 'http://192.168.178.110:5984/hotelmanager';
      let options = {
       live: true,
       retry: true,

@@ -4,33 +4,36 @@
             Hotel Manager
         </ion-title>
         <ion-buttons end>
-            <button ion-button icon-only (click)="createTodo()"><ion-icon name="cloud-upload"></ion-icon></button>
+            <button ion-button icon-only (click)="createTodo()">
+                <ion-icon name="cloud-upload"></ion-icon>
+            </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
-
 <ion-content>
-
-    <ion-list no-lines>
-
-        <ion-item-sliding *ngFor="let todo of todos">
-
-            <ion-item>
-
-                {{todo.title}}
-
-            </ion-item>
-
-            <ion-item-options>
-                <button ion-button icon-only color="light" (click)="updateTodo(todo)">
-          <ion-icon name="create"></ion-icon>
-        </button>
-                <button ion-button icon-only color="primary" (click)="deleteTodo(todo)">
-          <ion-icon name="checkmark"></ion-icon>
-        </button>
-            </ion-item-options>
-        </ion-item-sliding>
-
-    </ion-list>
-
+    <div class="menu-box">
+        <div *ngFor="let item of mainmenus; let i = index" [attr.data-index]="i" class="item-box">
+            <span class="menu-item">
+                {{item}}
+            </span>
+            <ion-icon name="close" (click)="removeMenuItem(i)"></ion-icon>
+        </div>
+        <div class="add-menu-item">
+            <span class="new-menu-item">New Menu Item</span>
+            <ion-icon name="add"></ion-icon>
+        </div>
+    </div>
+    <div class="menu-list">
+        <div class="left-box">
+             <div *ngFor="let item of mainmenus" class="item-box">
+            <span class="menu-item">
+                {{item}}
+            </span>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+        </div>
+        </div>
+        <div class="right-box">
+            <itemlist></itemlist>
+        </div>
+    </div>
 </ion-content>

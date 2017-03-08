@@ -3,11 +3,13 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { Todos } from '../providers/todos';
+import { ItemListDirective } from '../pages/item-list/item-list';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ItemListDirective
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -15,7 +17,8 @@ import { Todos } from '../providers/todos';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ItemListDirective
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Todos]
 })
