@@ -1,0 +1,82 @@
+<ion-header no-border>
+    <ion-navbar color="secondary">
+        <ion-title>
+            Admin Home
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button icon-only (click)="logout()"><ion-icon name="power"></ion-icon></button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="createMenu()"><ion-icon name="cloud-upload"></ion-icon></button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <div style="width:50%" class="menu">
+        <ion-list no-lines>
+
+            <ion-item-sliding *ngFor="let menu of menus" (click)="showSubMenus(menu)">
+
+                <ion-item>
+
+                    {{menu.title}}
+
+                </ion-item>
+
+                <ion-item-options>
+                    <button ion-button icon-only color="light" (click)="updateMenu(menu)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+                    <button ion-button icon-only color="primary" (click)="deleteMenu(menu)">
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+                </ion-item-options>
+            </ion-item-sliding>
+
+
+        </ion-list>
+    </div>
+    <div style="width:50%" *ngIf="showSubMenuFlag" class="submenu">
+        <!--<ion-item-sliding *ngFor="let subMenu of subMenus">-->
+
+        <ion-item *ngFor="let subMenu of subMenus ; let i = index" [attr.data-index]="i">
+
+            {{subMenu.name + " "+ subMenu.price}}
+            <image-upload [max]="1" [buttonCaption]="'Select Image!'" (onFileUploadFinish)="imageUploaded(subMenu.name,$event)" (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)"></image-upload>
+            <button ion-button icon-only color="light" (click)="updateSubMenu(subMenu,i)">
+            <ion-icon name="create"></ion-icon>
+          </button>
+            <button ion-button icon-only color="primary" (click)="deleteSubMenu(i)">
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+            <button ion-button icon-only color="primary" (click)="viewImages(subMenu.name)">
+          <ion-icon name="attach"></ion-icon>
+        </button>
+
+        </ion-item>
+
+        <ion-list no-lines *ngIf="showSubMenuImages">
+
+            <ion-item *ngFor="let imagesrc of imagesSrcs ; let j = index">
+                <ion-icon name="close" (click)="removeImage(j)"></ion-icon>
+                <img [src]="photoURL(imagesrc)">
+            </ion-item>
+        </ion-list>
+        <!--<ion-item-options>
+                <button ion-button icon-only color="light" (click)="updateSubMenu(subMenu)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+                <button ion-button icon-only color="primary" (click)="deleteSubMenu(subMenu)">
+          <ion-icon name="checkmark"></ion-icon>
+        </button>-->
+        <!--</ion-item-options>-->
+        <!--</ion-item-sliding>-->
+        <ion-fab bottom right>
+            <button ion-fab (click)="addSubMenu()">add</button>
+        </ion-fab>
+    </div>
+
+
+</ion-content>
