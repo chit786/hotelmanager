@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { NavController, AlertController } from 'ionic-angular';
 import { Todos } from '../../providers/todos';
-import { NavController,AlertController } from 'ionic-angular';
-
+import { LoginPage } from '../login/login';
+ 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+ 
   todos: any;
  
-  constructor(public navCtrl: NavController, public todoService: Todos, public alertCtrl: AlertController) {
+  constructor(public nav: NavController, public todoService: Todos, public alertCtrl: AlertController) {
  
   }
  
@@ -19,6 +21,12 @@ export class HomePage {
       this.todos = data;
     });
  
+  }
+ 
+  logout(){
+    this.todoService.logout();
+    this.todos = null;
+    this.nav.setRoot(LoginPage);
   }
  
   createTodo(){
@@ -81,5 +89,5 @@ export class HomePage {
   deleteTodo(todo){
     this.todoService.deleteTodo(todo);
   }
-
+ 
 }

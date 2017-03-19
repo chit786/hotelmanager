@@ -1,22 +1,34 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { Platform,Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+import { LoginPage } from '../pages/login/login';
+import { ClientHomePage } from '../pages/client-home/client-home';
 
-import { HomePage } from '../pages/home/home';
 
-
+ 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = HomePage;
-
+  @ViewChild(Nav) nav: Nav;
+  rootPage : any;
+ 
   constructor(platform: Platform) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      Splashscreen.hide();
+     
+      if(platform.is('mobile') || platform.is('mobileweb')){
+         StatusBar.styleDefault();
+         Splashscreen.hide();
+        this.nav.setRoot(ClientHomePage);
+      }else{
+        
+        this.nav.setRoot(LoginPage);
+
+      }
+
+      
     });
   }
 }
