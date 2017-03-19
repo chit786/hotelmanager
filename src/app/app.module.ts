@@ -23,3 +23,4 @@ import { ItemListDirective } from '../pages/item-list/item-list';
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Todos]
 })
 export class AppModule {}
+
