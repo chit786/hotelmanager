@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import PouchDB from 'pouchdb';
+import { Component } from "@angular/core"; 
 
 /*
   Generated class for the Adminorders provider.
@@ -30,8 +31,8 @@ export class Adminorders {
       this.isValidCall = true;
       this.db = new PouchDB('adminOrder');
       this.db_attach = new PouchDB('submenuAttachments');
-    this.remote = "http://192.168.1.77:5984/menus";
-    this.remote_attach = "http://192.168.1.77:5984/submenuattachments";
+    this.remote = "http://192.168.178.89:5984/menus";
+    this.remote_attach = "http://192.168.178.89:5984/submenuattachments";
  
     let options = {
       live: true,
