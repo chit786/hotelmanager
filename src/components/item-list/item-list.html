@@ -1,0 +1,38 @@
+<div class="sub-menu-list">
+    <div *ngFor="let item of submenus; let i = index" [attr.data-index]="i" class="item-box" (click)="selectItem(i)">
+        <span class="submenu-item">
+                {{item}}
+            </span>
+    </div>
+</div>
+<div class="sub-menu-description">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 class="text-center">Description</h3>
+            <div class="card">
+                <div class="row">
+                    <div class="col-lg-6 img-blk">
+                        <img src="https://agmstudio.io/themes/material-style/1.2.1/assets/img/demo/m2.jpg" alt="" class="row img-responsive">
+                        <div class="row ratings">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+                            <ion-icon name="star-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card-block text-center">
+                            <h4 class="color-royal">Ingredients</h4>
+                            <p>Palak, Paneer, salt, Masala ,curd, onions, cashew nuts etc.
+                            </p>
+                            <h4 class="color-royal">Lorem ipsum dolor sit</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam sed labore autem nesciunt ea veniam recusandae necessitatibus reprehenderit.</p>
+                        </div>
+                        <div class="rate-blk"> RS 150</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
