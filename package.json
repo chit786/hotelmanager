@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "2.2.1",
     "@angular/platform-server": "2.2.1",
     "@ionic/storage": "1.1.7",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.22",
     "@types/pouchdb": "5.4.28",
     "angular2-image-upload": "^0.4.1",
     "ionic-angular": "2.1.0",

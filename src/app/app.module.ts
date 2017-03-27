@@ -11,6 +11,7 @@ import { ClientHomePage } from '../pages/client-home/client-home';
 import {AdminHomePage} from '../pages/admin-home/admin-home';
 import {ImageUploadModule} from 'angular2-image-upload';
 import { ItemListComponent } from '../components/item-list/item-list';
+import { SampleModalPage } from '../components/sample-modal/sample-modal';
 
 
 
@@ -22,7 +23,8 @@ import { ItemListComponent } from '../components/item-list/item-list';
     SignupPage,
     ClientHomePage,
     AdminHomePage,
-    ItemListComponent
+    ItemListComponent,
+    SampleModalPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -36,7 +38,8 @@ import { ItemListComponent } from '../components/item-list/item-list';
     SignupPage,
     ClientHomePage,
     AdminHomePage,
-    ItemListComponent
+    ItemListComponent,
+    SampleModalPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Todos,ClientServices,Adminorders]
 })

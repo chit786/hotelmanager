@@ -14,7 +14,7 @@
 
 
 <ion-content>
-    <div class="menu-box">
+ <!--    <div class="menu-box">
         <div *ngFor="let menu of menus; let i = index" [attr.data-index]="i" class="item-box">
             <span class="menu-item">
                  {{menu.title}}
@@ -25,18 +25,20 @@
             <span class="new-menu-item">New Menu Item</span>
             <ion-icon name="add" (click)="createMenu()"></ion-icon>
         </div>
-    </div>
+    </div> -->
     <div class="menu-list">
         <div class="left-box">
             <div *ngFor="let menu of menus" class="item-box" (click)="showSubMenus(menu)">
                 <span class="menu-item">
-                {{menu.title}}
+                <ion-icon name="ios-restaurant" class="menu-item-box"></ion-icon>
+                <span class="menu-item-box title">{{menu.title}}</span>
             </span>
-                <ion-icon name="ios-arrow-forward"></ion-icon>
+                <ion-icon name="ios-arrow-forward" class="ica-fwd menu-item-box"></ion-icon>
             </div>
+            <div class="add-menu-btn" (click)="createMenu()">Add Menu</div>
         </div>
         <div class="right-box">
-            <item-list></item-list>
+            <item-list [selectedMenu]="selectedMenu"></item-list>
         </div>
     </div>
 

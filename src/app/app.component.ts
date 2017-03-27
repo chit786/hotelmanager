@@ -4,6 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { LoginPage } from '../pages/login/login';
 import { ClientHomePage } from '../pages/client-home/client-home';
 import { ItemListComponent } from '../components/item-list/item-list';
+import { SampleModalPage } from '../components/sample-modal/sample-modal';
 
 
  

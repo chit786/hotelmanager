@@ -74,28 +74,47 @@
             }
         }
         .menu-list {
-            height: 80%;
+            height: 100%;
             width: 100vw;
             position: absolute;
-            top: 20%;
+            top: 0;
             .left-box {
                 height: 100%;
                 width: 20%;
                 border: 1px solid brown;
                 display: inline-block;
                 overflow: auto;
-                .item-box {
+                background-color: #0e2c2d;
+                position: relative;
+                .add-menu-btn {
+                    position: absolute;
+                    bottom: 0;
                     height: 50px;
                     padding: 15px;
+                    text-align: center;
+                    font-size: 16px;
+                    font-weight: bold;
+                    width: 100%;
+                    background-color: #754d1c;
+                }
+                .item-box {
+                    height: 50px;
                     font-size: 16px;
                     font-weight: bold;
                     background-color: #c17629;
                     margin: 5px;
                     margin-left: 10px;
+                    background-color: #18bc9c;
                     box-shadow: -4px 4px 6px -1px rgba(37, 32, 32, 0.75);
-                    ion-icon {
+                    .ica-fwd {
                         float: right;
                         font-weight: bold;
+                    }
+                    .menu-item-box {
+                        padding: 15px;
+                        &.title {
+                            border-left: 1px solid black;
+                        }
                     }
                 }
             }
