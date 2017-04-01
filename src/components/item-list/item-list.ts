@@ -34,7 +34,8 @@ export class ItemListComponent {
 
   openmodal() {
      this.submenus = this.selectedMenu.items ? this.selectedMenu.items : this.submenus;
-    const modal = this.Modal.create(SampleModalPage);
+     var params = {name:'TUshar'};
+    const modal = this.Modal.create(SampleModalPage, params);
      modal.onDidDismiss(data => {
        console.log('data in modal');
             console.log(data);
@@ -52,7 +53,7 @@ export class ItemListComponent {
       //             });
                 
    });
-    modal.present();
+    modal.present(modal);
   }
 
 

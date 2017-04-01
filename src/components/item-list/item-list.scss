@@ -1,5 +1,13 @@
 .ios,
 .md {
+     .modal-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 75%;
+        height: 80%;
+        transform: translate(-50%, -50%) !important;
+    }   
     item-list {
         .sub-menu-list {
             height: 100%;
