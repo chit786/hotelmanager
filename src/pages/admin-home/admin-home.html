@@ -4,17 +4,17 @@
             Admin Home
         </ion-title>
         <ion-buttons start>
-            <button ion-button icon-only (click)="logout()"><ion-icon name="power"></ion-icon></button>
+            <button ion-button icon-only (click)="logout()">
+                <ion-icon name="power"></ion-icon>
+            </button>
         </ion-buttons>
         <!--<ion-buttons end>
             <button ion-button icon-only (click)="createMenu()"><ion-icon name="cloud-upload"></ion-icon></button>
         </ion-buttons>-->
     </ion-navbar>
 </ion-header>
-
-
 <ion-content>
- <!--    <div class="menu-box">
+    <!--    <div class="menu-box">
         <div *ngFor="let menu of menus; let i = index" [attr.data-index]="i" class="item-box">
             <span class="menu-item">
                  {{menu.title}}
@@ -28,12 +28,14 @@
     </div> -->
     <div class="menu-list">
         <div class="left-box">
-            <div *ngFor="let menu of menus" class="item-box" (click)="showSubMenus(menu)">
-                <span class="menu-item">
+            <div class="menu-list-box">
+                <div *ngFor="let menu of menus" class="item-box" (click)="showSubMenus(menu)">
+                    <span class="menu-item">
                 <ion-icon name="ios-restaurant" class="menu-item-box"></ion-icon>
                 <span class="menu-item-box title">{{menu.title}}</span>
-            </span>
-                <ion-icon name="ios-arrow-forward" class="ica-fwd menu-item-box"></ion-icon>
+                    </span>
+                    <ion-icon name="ios-arrow-forward" class="ica-fwd menu-item-box"></ion-icon>
+                </div>
             </div>
             <div class="add-menu-btn" (click)="createMenu()">Add Menu</div>
         </div>
@@ -41,7 +43,6 @@
             <item-list [selectedMenu]="selectedMenu"></item-list>
         </div>
     </div>
-
     <!--chitrang code below-->
     <!--<div style="width:50%" class="menu">
                 <ion-list no-lines>
@@ -97,6 +98,4 @@
                     <button ion-fab (click)="addSubMenu()">add</button>
                 </ion-fab>
             </div>-->
-
-
 </ion-content>

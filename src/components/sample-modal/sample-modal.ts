@@ -18,7 +18,9 @@ todo = {};
   selectedAttachDocRev : any;
   selectedCurrentMenu: any;
   constructor(private viewCtrl: ViewController,params: NavParams,public adminService: Adminorders,public sanitizer : DomSanitizer) {
+  	console.log('modal params ssss');
   	console.log(params);
+  	this.selectedSubMenu = params;
   }
 
 
@@ -28,10 +30,11 @@ photoURL(url) {
 
     imageUploaded(subId,e){
      console.log((e));
-        console.log(subId);
+
+        console.log(this.selectedSubMenu.data.name);
    
       // this.subAttachments.push(e);
-   this.adminService.putSubMenuAttachments(subId,e.file).then((result)=>{
+   this.adminService.putSubMenuAttachments(this.selectedSubMenu.data.name, e.file).then((result)=>{
    	 console.log('1');
      this.selectedAttachDocRev = (result as any)._rev;
    }).then(()=>{

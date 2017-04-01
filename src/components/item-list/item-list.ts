@@ -29,61 +29,21 @@ export class ItemListComponent {
   }
 
   selectItem(index) {
-    //this.selectedItem = this.submenus[index];
+    this.selectedItem = this.selectedMenu.items[index];
   }
 
   openmodal() {
      this.submenus = this.selectedMenu.items ? this.selectedMenu.items : this.submenus;
-     var params = {name:'TUshar'};
+     var params =  this.selectedItem;
     const modal = this.Modal.create(SampleModalPage, params);
      modal.onDidDismiss(data => {
        console.log('data in modal');
             console.log(data);
-      // var item = {
-      //        name : data.name,
-      //        price : data.price
-      //      }
-      //             this.submenus.push(item);
-              
-      //               this.adminService.updateMenu({
-      //               _id: this.selectedMenu._id,
-      //               _rev: this.selectedMenu._rev,
-      //               title: this.selectedMenu.title,
-      //               items: this.submenus
-      //             });
-                
-   });
-    modal.present(modal);
-  }
-
-
-  addSubMenu(){
-    this.submenus = this.selectedMenu.items ? this.selectedMenu.items : this.submenus;
-    let prompt = this.alertCtrl.create({
-      title: 'Edit',
-      message: 'Add new item?',
-      inputs: [
-        {
-          name: 'name',
-          placeholder: 'Name'
-        },
-        {
-          name: 'price',
-          placeholder: 'Price'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel'
-        },
-        {
-          text: 'Add',
-          handler: data => {
-            console.log('data in modal');
-            console.log(data);
            var item = {
-             name : data.box,
-             price : data.price
+             name : data.name,
+             price : data.price,
+             description: data.description,
+             ingredients: data.ingredients
            }
                   this.submenus.push(item);
               
@@ -93,16 +53,61 @@ export class ItemListComponent {
                     title: this.selectedMenu.title,
                     items: this.submenus
                   });
+
+                
+   });
+    modal.present(modal);
+  }
+
+
+  addSubMenu(){
+
+    this.openmodal();
+   // this.submenus = this.selectedMenu.items ? this.selectedMenu.items : this.submenus;
+    // let prompt = this.alertCtrl.create({
+    //   title: 'Edit',
+    //   message: 'Add new item?',
+    //   inputs: [
+    //     {
+    //       name: 'name',
+    //       placeholder: 'Name'
+    //     },
+    //     {
+    //       name: 'price',
+    //       placeholder: 'Price'
+    //     }
+    //   ],
+    //   buttons: [
+    //     {
+    //       text: 'Cancel'
+    //     },
+    //     {
+    //       text: 'Add',
+    //       handler: data => {
+    //         console.log('data in modal');
+    //         console.log(data);
+    //        var item = {
+    //          name : data.box,
+    //          price : data.price
+    //        }
+    //               this.submenus.push(item);
+              
+    //                 this.adminService.updateMenu({
+    //                 _id: this.selectedMenu._id,
+    //                 _rev: this.selectedMenu._rev,
+    //                 title: this.selectedMenu.title,
+    //                 items: this.submenus
+    //               });
                 
 
 
           
-          }
-        }
-      ]
-    });
+    //       }
+    //     }
+    //   ]
+    // });
  
-    prompt.present();
+   // prompt.present();
 
   }
 

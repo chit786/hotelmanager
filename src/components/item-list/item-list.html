@@ -4,7 +4,7 @@
                 {{item?.name}}
             </span>
     </div>
-    <div class="add-submenu-btn" (click)="addSubMenu()"><ion-icon name="add"></ion-icon></div>
+    <div class="add-submenu-btn" *ngIf="selectedMenu.title" (click)="addSubMenu()"><ion-icon name="add"></ion-icon></div>
 </div>
 <div class="sub-menu-description">
     <div class="row">

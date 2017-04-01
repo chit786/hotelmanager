@@ -118,8 +118,13 @@ export class Adminorders {
 
   putSubMenuAttachments(subid,file){
     var db = this.db_attach;
+    console.log('in factory');
+     console.log(subid);
+      console.log(file);
      return new Promise(resolve => {
     this.db_attach.get(subid).then(function(doc){
+      console.log('in datafac');
+       console.log(doc);
       if(doc){
             db.putAttachment(subid,file.name,doc._rev,file,file.type).then(function (result) {
           console.log("uploaded");
@@ -128,14 +133,22 @@ export class Adminorders {
             console.log(err);
           });
       }else{
+         console.log('else in factory');
+          console.log(subid);
+           console.log('in factory');
           db.putAttachment(subid,file.name,file,file.type).then(function (result) {
       console.log("uploaded");
        resolve(result);
       }).catch(function (err) {
-        console.log(err);
+          console.log(err);
       });
       }
-    })
+    }).catch(function () {
+          db.putAttachment(subid,file.name,file,file.type).then(function (result) {
+          console.log("uploaded");
+          resolve(result);
+          })
+      });
      });
 
  

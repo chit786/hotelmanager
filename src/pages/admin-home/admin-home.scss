@@ -83,9 +83,13 @@
                 width: 20%;
                 border: 1px solid brown;
                 display: inline-block;
-                overflow: auto;
+                overflow: hidden;
                 background-color: #0e2c2d;
                 position: relative;
+                .menu-list-box {
+                    height: calc(100% - 55px);
+                    overflow: auto;
+                }
                 .add-menu-btn {
                     position: absolute;
                     bottom: 0;
