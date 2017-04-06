@@ -19,6 +19,8 @@
     "@angular/platform-browser": "2.2.1",
     "@angular/platform-browser-dynamic": "2.2.1",
     "@angular/platform-server": "2.2.1",
+    "@ionic-native/device": "^3.4.4",
+    "@ionic-native/secure-storage": "^3.4.4",
     "@ionic/storage": "1.1.7",
     "@types/pouchdb": "5.4.28",
     "angular2-image-upload": "^0.4.1",

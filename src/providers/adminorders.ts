@@ -16,10 +16,13 @@ export class Adminorders {
 
   data: any;
   db: any;
+  data_devices:any;
+  db_devices : any;
   remote: any;
   isValidCall : any;
   db_attach : any;
   remote_attach : any;
+  remote_devices:any;
 
   constructor(public http: Http) {
 
@@ -32,9 +35,11 @@ export class Adminorders {
       this.isValidCall = true;
       this.db = new PouchDB('adminOrder');
       this.db_attach = new PouchDB('submenuAttachments');
+      this.db_devices = new PouchDB('devices');
     this.remote = "http://127.0.0.1:5984/menus";
     this.remote_attach = "http://127.0.0.1:5984/submenuattachments";
- 
+    this.remote_devices = "http://127.0.0.1:5984/devices";
+
     let options = {
       live: true,
       retry: true,
@@ -43,9 +48,8 @@ export class Adminorders {
  
     this.db.sync(this.remote, options);
     this.db_attach.sync(this.remote_attach,options);
+     this.db_devices.sync(this.remote_devices,options);
  
-    console.log(this.db);
-    console.log(this.db_attach);
 
     }else{
       console.log("unauthorized call! please login again!");
@@ -246,6 +250,96 @@ export class Adminorders {
  
     }
  
+  }
+
+  // device management 
+
+ getDevices() {
+ 
+    if (this.data_devices) {
+      return Promise.resolve(this.data_devices);
+    }
+ 
+    return new Promise(resolve => {
+      
+      this.db_devices.allDocs({
+ 
+        include_docs: true
+ 
+      }).then((result) => {
+ 
+        this.data_devices = [];
+ 
+        let docs = result.rows.map((row) => {
+          this.data_devices.push(row.doc);
+        });
+ 
+        resolve(this.data_devices);
+ 
+        this.db_devices.changes({live: true, since: 'now', include_docs: true}).on('change', (change) => {
+          this.handleDeviceChange(change);
+        });
+ 
+      }).catch((error) => {
+ 
+        console.log(error);
+ 
+      }); 
+ 
+    });
+ 
+  }
+ 
+ 
+  handleDeviceChange(change){
+ 
+    let changedDoc = null;
+    let changedIndex = null;
+ 
+    this.data_devices.forEach((doc, index) => {
+ 
+      if(doc._id === change.id){
+        changedDoc = doc;
+        changedIndex = index;
+      }
+ 
+    });
+ 
+    //A menu was deleted
+    if(change.deleted){
+      this.data_devices.splice(changedIndex, 1);
+    } 
+    else {
+ 
+      //A menu was updated
+      if(changedDoc){
+        this.data_devices[changedIndex] = change.doc;
+      } 
+ 
+      //A menu was added
+      else {
+        this.data_devices.push(change.doc); 
+      }
+ 
+    }
+ 
+  }
+
+
+  createDevice(device){
+    this.db_devices.post(device);
+  }
+ 
+  updateDevice(device){
+    this.db_devices.put(device).catch((err) => {
+      console.log(err);
+    });
+  }
+ 
+  deleteDevice(device){
+    this.db_devices.remove(device).catch((err) => {
+      console.log(err);
+    });
   }
  
 
