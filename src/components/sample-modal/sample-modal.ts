@@ -8,7 +8,7 @@ import {DomSanitizer} from '@angular/platform-browser';
   templateUrl: 'sample-modal.html'
 })
 export class SampleModalPage {
-todo = {};
+ todo :any;
   subAttachments : any;
   subMenuImages : any;
   showSubMenuImages:any;
@@ -17,9 +17,16 @@ todo = {};
   selectedSubMenu : any;
   selectedAttachDocRev : any;
   selectedCurrentMenu: any;
+  uploadedSubMenu:any;
   constructor(private viewCtrl: ViewController,params: NavParams,public adminService: Adminorders,public sanitizer : DomSanitizer) {
   	console.log('modal params ssss');
   	console.log(params);
+   this.todo = {
+      name : '',
+      ingredients: '',
+      description: '',
+      price: ''
+    }
   	this.selectedSubMenu = params;
   }
 
@@ -28,19 +35,20 @@ photoURL(url) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 
-    imageUploaded(subId,e){
-     console.log((e));
+  imageUploaded(subId,e){
+    //  console.log((e));
 
-        console.log(this.selectedSubMenu.data.name);
-   
-      // this.subAttachments.push(e);
-   this.adminService.putSubMenuAttachments(this.selectedSubMenu.data.name, e.file).then((result)=>{
-   	 console.log('1');
+        // console.log(this.selectedSubMenu.data.name);
+   var Name = this.selectedSubMenu.data.name ? this.selectedSubMenu.data.name : this.todo.name;
+
+   this.adminService.putSubMenuAttachments(Name, e.file).then((result)=>{
+   	 
+      this.uploadedSubMenu = result;
      this.selectedAttachDocRev = (result as any)._rev;
    }).then(()=>{
-   	console.log('12');
+   
      this.viewImages(subId);
-     console.log('13');
+    
    });
    
   }
@@ -48,11 +56,11 @@ photoURL(url) {
   uploadAttachments(subId){
 
     var adminser = this.adminService;
-    console.log('2');
+    
     this.subAttachments.forEach(function(file){
-    	console.log('21');
+    
       adminser.putSubMenuAttachments(subId,file);
-      console.log('22');
+     
     })
     
 
@@ -61,13 +69,14 @@ photoURL(url) {
   
   imageRemoved(e){
   	console.log('3');
-      this.adminService.removeAttachment(this.selectedSubMenu,e.file.name,this.selectedAttachDocRev).then((result)=>{
+    console.log(this.uploadedSubMenu);
+      this.adminService.removeAttachment(this.uploadedSubMenu.id,e.file.name,this.selectedAttachDocRev).then((result)=>{
       	console.log('31');
           this.selectedAttachDocRev = (result as any)._rev;
 console.log('32');
       }).then(()=>{
       	console.log('33');
-        this.viewImages(this.selectedSubMenu);
+        this.viewImages(this.uploadedSubMenu.id);
         console.log('34');
       });
   }
@@ -77,23 +86,23 @@ console.log('32');
     this.imagesSrcs = [];
     this.imagesNames = [];
     this.showSubMenuImages = true;
-    console.log('4');
+   
     this.adminService.getSubMenuAttachments(subMenu).then((doc)=>{
-    	console.log('41');
+    
       var url;
         for(var key in (doc as any)._attachments){
-        	console.log('42');
+        
           this.selectedSubMenu = (doc as any)._id;
           this.selectedAttachDocRev = (doc as any)._rev;
           this.imagesNames.push(key);
           this.adminService.getAttachment(subMenu,key).then(function (blob){
-          	console.log('43');
+          	
             url = URL.createObjectURL(blob);
-            console.log('44');
+           
           }).then(()=>{
-            console.log('45');
+           
              this.imagesSrcs.push(url);
-             console.log('46');
+             
              
           });
         }
@@ -104,12 +113,11 @@ console.log('32');
   }
 
   removeImage(imgIndex){
-  	console.log('5');
+  	
       this.adminService.removeAttachment(this.selectedSubMenu,this.imagesNames[imgIndex],this.selectedAttachDocRev).then((result)=>{
-        console.log("removed");
-        console.log('51');
+       
         this.viewImages(this.selectedSubMenu);
-        console.log('52');
+       
       })
     
 

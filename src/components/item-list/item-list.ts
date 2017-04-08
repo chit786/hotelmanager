@@ -37,6 +37,7 @@ export class ItemListComponent {
      var params =  this.selectedItem;
     const modal = this.Modal.create(SampleModalPage, params);
      modal.onDidDismiss(data => {
+       
        console.log('data in modal');
             console.log(data);
            var item = {
