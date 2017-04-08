@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.1.3",
+    "lato-font": "^3.0.0",
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
