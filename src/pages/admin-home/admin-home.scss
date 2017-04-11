@@ -8,6 +8,13 @@
 // }
 .ios,
 .md {
+    .toolbar-md-secondary .toolbar-background-md {
+        background-color: #283018;
+        font-weight: bold;
+    }
+    .toolbar-md-secondary .toolbar-title-md {
+        font-weight: bold;
+    }
     page-admin-home {
         .scroll-content {
             background-color: #ecf0f1;
@@ -28,7 +35,7 @@
         .menu-box {
             width: 100vw;
             height: 20%;
-            background-color: #694612;
+            background-color: #f0eceb;
             position: absolute;
             overflow-y: auto;
             overflow-x: hidden;
@@ -57,7 +64,7 @@
                 height: 50px;
                 width: 170px;
                 color: white;
-                background-color: #095609;
+                background-color: #3a2818;
                 padding: 15px;
                 font-size: 16px;
                 font-weight: bold;
@@ -84,11 +91,18 @@
                 border: 1px solid brown;
                 display: inline-block;
                 overflow: hidden;
-                background-color: #0e2c2d;
+                background-color: #f0eceb;
                 position: relative;
                 .menu-list-box {
                     height: calc(100% - 55px);
                     overflow: auto;
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                        background-color: transparent;
+                    }
+                   &::-webkit-scrollbar-thumb {
+                        background-color: #d8ccac;
+                    }
                 }
                 .add-menu-btn {
                     position: absolute;
@@ -99,25 +113,45 @@
                     font-size: 16px;
                     font-weight: bold;
                     width: 100%;
-                    background-color: #754d1c;
+                    background-color: #283018;
+                    color: white;
                 }
                 .item-box {
                     height: 50px;
                     font-size: 16px;
                     font-weight: bold;
-                    background-color: #c17629;
+                    background-color: #d8ccac;
                     margin: 5px;
                     margin-left: 10px;
-                    background-color: #18bc9c;
-                    box-shadow: -4px 4px 6px -1px rgba(37, 32, 32, 0.75);
-                    .ica-fwd {
-                        float: right;
-                        font-weight: bold;
+                    &:hover {
+                        box-shadow: 0px 2px 2px 2px rgba(175, 167, 167, 0.75);
                     }
+                    &.selected {
+                        background-color: #677564;
+                        color: white;
+                        font-weight: bold;
+                        box-shadow: 0px 2px 2px 2px rgba(37, 32, 32, 0.75);
+                        .menu-item-box {
+                            &.title {
+                                border-left: 1px solid white;
+                            }
+                        }
+                    }
+                    // box-shadow: -4px 4px 6px -1px rgba(37, 32, 32, 0.75);
                     .menu-item-box {
                         padding: 15px;
+                        height: 50px;
+                        width: 45px;
+                        display: inline-block;
+                        float: left;
                         &.title {
                             border-left: 1px solid black;
+                            height: 50px;
+                            width: calc(100% - 45px);
+                            display: inline-block;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
                         }
                     }
                 }

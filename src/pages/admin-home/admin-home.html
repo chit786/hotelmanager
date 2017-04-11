@@ -1,7 +1,7 @@
 <ion-header no-border>
     <ion-navbar color="secondary">
         <ion-title>
-            Admin Home
+            HOTEL CALIFORNIA
         </ion-title>
         <ion-buttons start>
             <button ion-button icon-only (click)="logout()">
@@ -29,12 +29,12 @@
     <div class="menu-list">
         <div class="left-box">
             <div class="menu-list-box">
-                <div *ngFor="let menu of menus" class="item-box" (click)="showSubMenus(menu)">
-                    <span class="menu-item">
+                <div *ngFor="let menu of menus; let i = index" [attr.data-index]="i" class="item-box" (click)="showSubMenus(menu, i)" [ngClass]="{'selected': i==selectedIndex }">
+                    <!-- <span class="menu-item"> -->
                 <ion-icon name="ios-restaurant" class="menu-item-box"></ion-icon>
                 <span class="menu-item-box title">{{menu.title}}</span>
-                    </span>
-                    <ion-icon name="ios-arrow-forward" class="ica-fwd menu-item-box"></ion-icon>
+                    <!-- </span> -->
+                    <!-- <ion-icon name="ios-arrow-forward" class="ica-fwd menu-item-box"></ion-icon> -->
                 </div>
             </div>
             <div class="add-menu-btn" (click)="createMenu()">Add Menu</div>

@@ -78,15 +78,16 @@ export class Adminorders {
   }
 
   getSubMenuAttachments(subId){
-        return new Promise(resolve => {
+
+        return new Promise((resolve) => {
           this.db_attach.get(subId,{attachments: true}).then(function (doc) {
             resolve(doc);
-          })
-        }).catch((error) => {
- 
-        console.log(error);
+          }).catch((error) => {
+      
+          
  
       });
+        })
    
   }
 

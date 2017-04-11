@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input  } from '@angular/core';
 import { ViewController,NavParams} from 'ionic-angular';
 import { Adminorders } from '../../providers/adminorders';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -8,6 +8,7 @@ import {DomSanitizer} from '@angular/platform-browser';
   templateUrl: 'sample-modal.html'
 })
 export class SampleModalPage {
+
  todo :any;
   subAttachments : any;
   subMenuImages : any;
@@ -22,13 +23,15 @@ export class SampleModalPage {
   	console.log('modal params ssss');
   	console.log(params);
    this.todo = {
-      name : '',
-      ingredients: '',
-      description: '',
-      price: ''
+      name : params.data.name ? params.data.name : '',
+      ingredients: params.data.ingredients ? params.data.ingredients : '',
+      description: params.data.description ? params.data.description : '',
+      price: params.data.price ? params.data.price : ''
     }
   	this.selectedSubMenu = params;
   }
+
+
 
 
 photoURL(url) {

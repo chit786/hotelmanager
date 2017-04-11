@@ -1,18 +1,18 @@
 .ios,
 .md {
-     .modal-wrapper {
+    .modal-wrapper {
         position: absolute;
         top: 50%;
         left: 50%;
         width: 75%;
         height: 80%;
         transform: translate(-50%, -50%) !important;
-    }   
+    }
     item-list {
         .sub-menu-list {
             height: 100%;
             width: 25%;
-            background-color: #054a4c;
+            background-color: #f0eceb;
             display: inline-block;
             overflow: hidden;
             position: relative;
@@ -22,11 +22,19 @@
                 padding: 15px;
                 font-size: 16px;
                 font-weight: bold;
-                background-color: #18bc7f;
-                color: #0a0a0a;
+                background-color: #d8ccac;
+                color: black;
                 margin: 5px 0;
                 white-space: nowrap;
-                box-shadow: -4px 4px 6px -1px rgba(37, 32, 32, 0.75);
+                &.selected {
+                    background-color: #677564;
+                    color: white;
+                    font-weight: bold;
+                    box-shadow: -4px 4px 6px -1px rgba(37, 32, 32, 0.75);
+                }
+                &:hover {
+                    box-shadow: -4px 4px 6px -1px rgba(37, 32, 32, 0.75);
+                }
             }
             .add-submenu-btn {
                 height: 50px;
@@ -51,13 +59,62 @@
         .sub-menu-description {
             height: 100%;
             width: 74%;
-            background-color: #0e6d5a;
+            background-color: #677564;
             display: inline-block;
             overflow: hidden;
+            .title {
+                background-color: #677564;
+                margin: 0;
+                font-weight: bold;
+                color: white;
+                border-bottom: 1px solid #d8ccac;
+                width: calc(100% - 100px);
+            }
+            .editSubMenu {
+                position: absolute;
+                right: 65px;
+                color: white;
+                width: 50px;
+                padding: 2rem 0 1.5rem;
+                line-height: 1.1;
+                font-size: 2.2rem;
+                border-bottom: 1px solid #d8ccac;
+                border-left: 1px solid #d8ccac;
+                top: 0;
+                ion-icon {
+                    font-size: 0.9em
+                }
+            }
+            .deleteSubMenu {
+                position: absolute;
+                right: 15px;
+                color: white;
+                width: 50px;
+                padding: 2rem 0 1.5rem;
+                line-height: 1.1;
+                font-size: 2.2rem;
+                border-bottom: 1px solid #d8ccac;
+                border-left: 1px solid #d8ccac;
+                top: 0;
+                ion-icon {
+                    font-size: 0.9em
+                }
+            }
             .row {
                 margin-right: -15px;
                 margin-left: -15px;
                 height: 100%;
+                &.description {
+                    height: 30%;
+                    text-align: center;
+                    .color-royal {
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+                &.img-ct {
+                    height: 60%;
+                }
             }
             .row:before {
                 display: table;
@@ -84,10 +141,11 @@
                 box-shadow: none;
                 box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
                 border-radius: 2px;
-                background-color: #0e6d5a;
+                background-color: #677564;
                 margin-bottom: 20px;
                 margin-bottom: 2rem;
                 height: 100%;
+                color: white;
                 .row {
                     margin: 0;
                 }
@@ -97,6 +155,47 @@
             }
             .img-blk {
                 padding: 50px 0;
+                .leftSlide {
+                    position: absolute;
+                    width: 30px;
+                    height: 100%;
+                    z-index: 99;
+                    opacity: 0.3;
+                    background-color: whitesmoke;
+                    top: 50%;
+                    height: 300px;
+                    transform: translateY(-50%);
+                    ion-icon {
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 30px;
+                        position: absolute;
+                        font-weight: bold;
+                        z-index: 999;
+                    }
+                }
+                .rightSlide {
+                    position: absolute;
+                    width: 30px;
+                    height: 100%;
+                    z-index: 99;
+                    opacity: 0.3;
+                    right: 0;
+                    background-color: whitesmoke;
+                    top: 50%;
+                    height: 300px;
+                    transform: translateY(-50%);
+                    ion-icon {
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 30px;
+                        position: absolute;
+                        font-weight: bold;
+                        z-index: 999;
+                    }
+                }
             }
             .ratings {
                 font-size: 2vmax;
@@ -131,6 +230,7 @@
             .card.card-block {
                 padding: 20px;
                 padding: 2rem;
+                height: 80%;
             }
         }
     }

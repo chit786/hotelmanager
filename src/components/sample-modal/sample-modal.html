@@ -11,7 +11,7 @@
     <form (ngSubmit)="dismiss()">
         <div class="content-blk">
             <ion-item>
-                <ion-label>Todo</ion-label>
+                <ion-label>Item Name</ion-label>
                 <ion-input type="text" [(ngModel)]="todo.name" name="title"></ion-input>
             </ion-item>
             <ion-item>
@@ -27,7 +27,7 @@
                 <ion-input type="number" [(ngModel)]="todo.price" name="price"></ion-input>
             </ion-item>
             <ion-item class="imgUploadBlk">
-                <image-upload [max]="1" [buttonCaption]="'Select'" (onFileUploadFinish)="imageUploaded(todo.name ,$event)" (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)"></image-upload>
+                <image-upload [max]="5" [buttonCaption]="'Select'" (onFileUploadFinish)="imageUploaded(todo.name ,$event)" (onRemove)="imageRemoved($event)" (isPending)="disableSendButton($event)"></image-upload>
             </ion-item>
         </div>
         <button ion-button type="submit" block>Add Menu</button>

@@ -27,6 +27,7 @@ export class AdminHomePage {
   selectedSubMenu : any;
   selectedAttachDocRev : any;
   selectedCurrentMenu: any;
+  selectedIndex:any;
 
 
   constructor(public navCtrl: NavController,public adminService: Adminorders, public navParams: NavParams,public alertCtrl: AlertController,public sanitizer : DomSanitizer) {}
@@ -113,7 +114,9 @@ export class AdminHomePage {
   }
 
 
-  showSubMenus(menu){
+  showSubMenus(menu, index){
+    this.selectedIndex = index;
+
       this.selectedMenu = menu;
     console.log(this.selectedMenu);
     this.showSubMenuFlag = true;
